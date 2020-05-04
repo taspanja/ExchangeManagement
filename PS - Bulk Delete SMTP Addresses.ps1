@@ -8,10 +8,10 @@
 #>
 
 # Get aliases of all mailboxes
-$Mailboxes = Get-Mailbox -ResultSize Unlimited | where{$_.emailaddresses -like "*@thepointmalta.com"}
+$Mailboxes = Get-Mailbox -ResultSize Unlimited | where{$_.emailaddresses -like "*@domain.com"}
  
 # Email address to remove
-$ExcludedSMTPAddress = "*@thepointmalta.com"
+$ExcludedSMTPAddress = "*@domain.com"
  
 # Run through list of users attempting to remove smtp address
 $Counter = 0
