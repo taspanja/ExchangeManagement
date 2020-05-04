@@ -8,10 +8,10 @@
 #>
 
 # Get aliases of all mailboxes
-$Mailboxes = Get-Mailbox -ResultSize Unlimited | where{$_.emailaddresses -like "*@midimalta.com"}
+$Mailboxes = Get-Mailbox -ResultSize Unlimited | where{$_.emailaddresses -like "*@domain.com"}
  
 # Email address to remove
-$IncludeSMTPAddress = "*@midimaltaPLC.mail.onmicrosoft.com"
+$IncludeSMTPAddress = "*@domain.mail.onmicrosoft.com"
  
 # Run through list of users attempting to remove smtp address
 $Counter = 0
@@ -23,7 +23,7 @@ ForEach ($User in $Mailboxes) {
         # If the mailbox does not have the included address add it
         If ($ProxyAddresses -notlike "$IncludeSMTPAddress") {
             $Counter++
-	Set-Mailbox -Identity "$User" -EmailAddresses @{Add="$($User.Alias)@midimaltaPLC.mail.onmicrosoft.com"}
+	Set-Mailbox -Identity "$User" -EmailAddresses @{Add="$($User.Alias)@domain.mail.onmicrosoft.com"}
         }
     }
     Catch {Write-Warning -Message "A problem occurred for $User"}
